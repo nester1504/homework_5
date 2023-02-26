@@ -1,7 +1,7 @@
 ﻿Console.WriteLine("Введите длину массива");
 bool check = false;
 int number = 0;
-int count = 0;
+int sum = 0;
 
 int ReadNumber()
 {
@@ -27,29 +27,27 @@ int[] GetArray(int size)
     int[] result = new int[size];
     for (int i = 0; i < result.Length; i++)
     {
-        result[i] = new Random().Next(100, 1000);
+        result[i] = new Random().Next(-100, 101);
     }
     return result;
 
 }
 
-int CountEvenNumbers(int[] array)
+int SumPosition(int[] array)
 {
     int size = array.Length;
-    for (int i = 0; i < size; i++)
+    int sum = 0;
+    for (int i = 1; i < size; i+=2)
     {
-        if (array[i] % 2 == 0)
-        {
-            count++;
-        }
+        sum = sum + array[i];
     }
-    return count;
+    return sum;
 }
 
 int[] array = GetArray(ReadNumber());
 
 Console.WriteLine(String.Join("; ", array));
 
-count = CountEvenNumbers(array);
+sum = SumPosition(array);
 
-Console.WriteLine($"Количество четных часел = {count}");
+Console.WriteLine($"Сумма чисел в нечётных позициях = {sum}");
